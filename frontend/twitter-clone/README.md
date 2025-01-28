@@ -1,6 +1,3 @@
-Aqui está uma versão simplificada e básica do `README.md` para o seu projeto, sem menção ao Docker e com uma linguagem mais direta:
-
-```markdown
 # Twitter Clone with React and Tailwind CSS
 
 Um clone simples do Twitter, construído com React e Tailwind CSS. Este projeto simula funcionalidades básicas como postagens, curtidas e comentários.
@@ -17,7 +14,7 @@ Um clone simples do Twitter, construído com React e Tailwind CSS. Este projeto 
 
 ### Pré-requisitos
 
-- Node.js (v16 ou superior)
+- Node.js (v20 ou superior)
 - npm ou yarn
 
 ### Passos
@@ -97,7 +94,7 @@ Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICEN
 
 ---
 
-Feito com ❤️ por [Seu Nome](https://github.com/seu-usuario).
+Feito com ❤️ por *Wundu*.
 ```
 
 ### O que foi simplificado:
