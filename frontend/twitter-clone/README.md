@@ -1,4 +1,3 @@
-```markdown
 # Twitter Clone with React and Tailwind CSS
 
 Um clone simples do Twitter, construído com React e Tailwind CSS. Este projeto simula funcionalidades básicas como postagens, curtidas e comentários.
