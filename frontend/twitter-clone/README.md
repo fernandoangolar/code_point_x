@@ -1,5 +1,3 @@
-Aqui está uma versão simplificada e básica do `README.md` para o seu projeto, sem menção ao Docker e com uma linguagem mais direta:
-
 ```markdown
 # Twitter Clone with React and Tailwind CSS
 
