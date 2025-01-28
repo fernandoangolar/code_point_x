@@ -32,4 +32,4 @@ O frontend do projeto está localizado na pasta `frontend/twitter-clone`. Para v
 
 ---
 
-Feito com ❤️ por [Seu Nome](https://github.com/seu-usuario).
+Feito com ❤️ por WUNDU.
