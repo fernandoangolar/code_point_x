@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.post-form {
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.post-input {
+    width: 100%;
+    min-height: 100px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.post-input:focus {
+    outline: none;
+}
+
+.char-counter {
+    font-size: 14px;
+    color: #888;
+    text-align: right;
+    transition: color 0.3s;
+}
+
+.char-counter.warning {
+    color: #ffd700;
+}
+
+.char-counter.danger {
+    color: #ff0000;
+}
+
+.post-button {
+    background-color: #1da1f2;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    float: right;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.post-button.active {
+    opacity: 1;
+}
+
+.post {
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #333;
+    margin-right: 12px;
+}
+
+.user-info {
+    flex-grow: 1;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.handle {
+    color: #888;
+}
+
+.post-content {
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    color: #888;
+}
+
+.action-button {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.action-button:hover {
+    color: #1da1f2;
+}
+
+.like-button.active {
+    color: #e0245e;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes likeAnimation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
