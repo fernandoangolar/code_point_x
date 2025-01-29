@@ -7,10 +7,11 @@ import {
   Globe, MoreHorizontal,
   Bookmark,
   Share2,
-  BarChart2
+  BarChart2,
 } from "lucide-react";
 
 const App = () => {
+
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -73,6 +74,9 @@ const App = () => {
     }));
   };
 
+  const [isPostModalOpen, setIsPostModalOpen] = useState(false);
+
+
   const handlePost = () => {
     if (newPost.trim() === "" || newPost.length > maxChars) return;
 
@@ -92,6 +96,87 @@ const App = () => {
 
     setPosts([newPostObj, ...posts]);
     setNewPost("");
+  };
+
+
+  const PostModal = ({ isOpen, onClose, onPost }: any) => {
+    const [newPost, setNewPost] = useState("");
+    const maxChars = 280;
+    const charCount = maxChars - newPost.length;
+
+    if (!isOpen) return null;
+
+    return (
+      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+        <div className="bg-gray-900 rounded-lg p-6 w-full max-w-md">
+          <h2 className="text-xl font-bold mb-4">Criar nova postagem</h2>
+          <textarea
+            className="w-full bg-transparent text-white resize-none outline-none min-h-[150px] border border-gray-800 rounded-lg p-3"
+            placeholder="O que está acontecendo?"
+            value={newPost}
+            onChange={(e) => setNewPost(e.target.value)}
+            maxLength={maxChars}
+          />
+          <div className="flex justify-between items-center mt-4">
+            <span className={`text-sm ${charCount <= 20 ? 'text-red-500' : 'text-gray-500'}`}>
+              {charCount}
+            </span>
+            <button
+              onClick={() => {
+                onPost(newPost);
+                onClose();
+              }}
+              className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
+            >
+              Postar
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const ProfileMenu = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+      <div className="relative">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center gap-2 p-2 hover:bg-gray-800 rounded-full cursor-pointer"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1514222709107-a180c68d72b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" // Substitua pela URL da sua foto de perfil
+            alt="Profile"
+            className="w-8 h-8 rounded-full"
+          />
+        </button>
+
+        {/* Dropdown Menu */}
+        {isOpen && (
+          <div className="absolute bottom-14 left-0 bg-gray-900 rounded-lg shadow-lg w-48 z-50">
+            <button
+              onClick={() => {
+                // Lógica para adicionar conta existente
+                setIsOpen(false);
+              }}
+              className="w-full text-left px-4 py-2 hover:bg-gray-800 rounded-t-lg"
+            >
+              Adicionar conta existente
+            </button>
+            <button
+              onClick={() => {
+                // Lógica para fazer logout
+                setIsOpen(false);
+              }}
+              className="w-full text-left px-4 py-2 hover:bg-gray-800 rounded-b-lg"
+            >
+              Fazer logout
+            </button>
+          </div>
+        )}
+      </div>
+    );
   };
 
   const FollowSuggestion = ({ user, handle, avatar }: { user: string, handle: string, avatar: string }) => {
@@ -127,7 +212,9 @@ const App = () => {
           <div className="flex md:flex-col justify-around md:justify-start md:space-y-4 p-2 md:p-4">
             <div className="hidden md:block p-3 hover:bg-gray-800 rounded-full w-min">
               <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current">
-                <g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g>
+                <g>
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                </g>
               </svg>
             </div>
             <SidebarItem icon={<Home />} text="Página Inicial" active />
@@ -135,11 +222,27 @@ const App = () => {
             <SidebarItem icon={<Bell />} text="Notificações" />
             <SidebarItem icon={<Mail />} text="Mensagens" />
             <SidebarItem icon={<Users />} text="Comunidades" />
-            <SidebarItem icon={<User />} text="Perfil" />
             <SidebarItem icon={<MoreHorizontal />} text="Mais" />
+
+            {/* Botão Postar - Oculto em telas pequenas */}
+            <button
+              onClick={() => setIsPostModalOpen(true)}
+              className="hidden md:block bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200"
+            >
+              Postar
+            </button>
+
+            {/* Menu de Perfil - Oculto em telas pequenas */}
+            <div className="hidden md:block">
+              <ProfileMenu />
+            </div>
           </div>
         </aside>
-
+        <PostModal
+          isOpen={isPostModalOpen}
+          onClose={() => setIsPostModalOpen(false)}
+          onPost={handlePost}
+        />
         {/* Main Content */}
         <main className="flex-1 mb-16 md:mb-0 md:ml-16 lg:ml-64 border-r border-gray-800 bg-black min-h-screen">
           <header className="border-b border-gray-800 p-4 sticky top-0 bg-black/80 backdrop-blur-sm z-40">
@@ -407,25 +510,26 @@ const App = () => {
   );
 };
 
-const SidebarItem = ({ icon, text, active }: any) => {
-  const [showTooltip, setShowTooltip] = useState(false);
+const SidebarItem = ({ icon, text, active = false }: any) => (
+  <div className={`flex items-center gap-3 p-3 rounded-full cursor-pointer ${active ? "bg-gray-800" : "hover:bg-gray-800"}`}>
+    {icon}
+    <span className="hidden lg:block">{text}</span>
+  </div>
+);
+
+const ProfileMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => setShowTooltip(true)}
-      onMouseLeave={() => setShowTooltip(false)}
-    >
-      <div className={`flex items-center gap-4 p-3 hover:bg-gray-800 rounded-full cursor-pointer
-        ${active ? "font-bold" : ""}`}>
-        <div className="w-6 h-6">{icon}</div>
-        <span className="hidden lg:inline text-xl">{text}</span>
-      </div>
+    <div className="relative">
+      <button onClick={() => setIsOpen(!isOpen)} className="flex items-center gap-2 p-2 hover:bg-gray-800 rounded-full cursor-pointer">
+        <img src="https://via.placeholder.com/150" alt="Profile" className="w-8 h-8 rounded-full" />
+      </button>
 
-      {/* Tooltip */}
-      {showTooltip && !window.matchMedia('(min-width: 1024px)').matches && (
-        <div className="absolute left-full ml-2 px-2 py-1 bg-gray-800 text-sm rounded whitespace-nowrap z-50 hidden md:block">
-          {text}
+      {isOpen && (
+        <div className="absolute bottom-14 left-0 bg-gray-900 rounded-lg shadow-lg w-48 z-50">
+          <button className="w-full text-left px-4 py-2 hover:bg-gray-800 rounded-t-lg">Adicionar conta</button>
+          <button className="w-full text-left px-4 py-2 hover:bg-gray-800 rounded-b-lg">Fazer logout</button>
         </div>
       )}
     </div>
