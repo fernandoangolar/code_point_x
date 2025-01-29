@@ -76,7 +76,6 @@ const App = () => {
 
   const [isPostModalOpen, setIsPostModalOpen] = useState(false);
 
-
   const handlePost = () => {
     if (newPost.trim() === "" || newPost.length > maxChars) return;
 
@@ -208,7 +207,7 @@ const App = () => {
     <div className="min-h-screen bg-black text-white">
       <div className="flex">
         {/* Left Sidebar */}
-        <aside className="fixed bottom-0 md:bottom-auto left-0 right-0 md:right-auto z-50 md:z-auto bg-black md:bg-transparent border-t md:border-t-0 border-gray-800 md:w-16 lg:w-64 md:border-r md:h-screen">
+        <aside className="fixed  bottom-0 md:bottom-auto left-0 right-0 md:right-auto z-50 md:z-auto bg-black md:bg-transparent border-t md:border-t-0 border-gray-800 md:w-16 lg:w-64 md:border-r md:h-screen">
           <div className="flex md:flex-col justify-around md:justify-start md:space-y-4 p-2 md:p-4">
             <div className="hidden md:block p-3 hover:bg-gray-800 rounded-full w-min">
               <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current">
@@ -442,16 +441,15 @@ const App = () => {
         </main>
 
         {/* Right Sidebar */}
-        <aside className="hidden md:block w-80 p-4 sticky top-0 h-screen overflow-y-auto bg-black">
-          <div className="bg-gray-900 rounded-2xl p-4 mb-4">
-            <h2 className="text-xl font-bold mb-4">Assine o Premium</h2>
-            <p className="text-sm mb-4">
-              Assine para desbloquear novos recursos e, se elegível, receba uma parte da receita.
-            </p>
-            <button className="bg-blue-400 text-white font-bold w-full py-2 rounded-full hover:bg-blue-500 transition-colors">
-              Inscrever-se
-            </button>
-          </div>
+        <aside className="hidden md:block w-80 p-4 sticky top-0 h-screen overflow-y-auto bg-black">  <div className="bg-gray-900 rounded-2xl p-4 mb-4">
+          <h2 className="text-xl font-bold mb-4">Assine o Premium</h2>
+          <p className="text-sm mb-4">
+            Assine para desbloquear novos recursos e, se elegível, receba uma parte da receita.
+          </p>
+          <button className="bg-blue-400 text-white font-bold w-full py-2 rounded-full hover:bg-blue-500 transition-colors">
+            Inscrever-se
+          </button>
+        </div>
 
           <div className="bg-gray-900 rounded-2xl p-4 mb-4">
             <h2 className="text-xl font-bold mb-4">O que está acontecendo</h2>
@@ -476,17 +474,17 @@ const App = () => {
             <FollowSuggestion
               user="Zenday Morais"
               handle="@zendaymorais"
-              avatar="https://via.placeholder.com/150"
+              avatar="https://tailwindcss.com/_next/static/media/avatar-7.7aeec531.png"
             />
             <FollowSuggestion
               user="stella"
               handle="@jessica_stellaa"
-              avatar="https://via.placeholder.com/150"
+              avatar="https://tailwindcss.com/_next/static/media/avatar-5.80ec4bd6.png"
             />
             <FollowSuggestion
               user="non aesthetic thi..."
               handle="@PicturesFolder"
-              avatar="https://via.placeholder.com/150"
+              avatar="https://tailwindcss.com/_next/static/media/avatar-4.61762eae.png"
             />
             <button className="text-blue-400 hover:text-blue-500 w-full text-left mt-2">
               Mostrar mais
