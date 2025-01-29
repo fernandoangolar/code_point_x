@@ -6,7 +6,6 @@ Um clone simples do Twitter, construído com React e Tailwind CSS. Este projeto 
 
 - 📝 Criar e visualizar postagens
 - ❤️ Curtir e descurtir postagens
-- 💬 Contador de comentários
 - 🔄 Navegação entre "Para você" e "Seguindo"
 - 🎨 Design moderno com Tailwind CSS
 
