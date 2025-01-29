@@ -21,8 +21,8 @@ Um clone simples do Twitter, construído com React e Tailwind CSS. Este projeto 
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   cd seu-repositorio
+   git clone https://github.com/fernandoangolar/code_point_x.git
+   cd code_point_x/frontend/twitter-clone
    ```
 
 2. Instale as dependências:
@@ -95,10 +95,3 @@ Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICEN
 
 Feito com ❤️ por *Wundu*.
 ```
-
-### O que foi simplificado:
-1. **Linguagem**: Mais direta e fácil de entender.
-2. **Remoção de seções complexas**: Docker e detalhes desnecessários foram removidos.
-3. **Foco no essencial**: Instalação, execução e estrutura básica do projeto.
-
-Agora o `README.md` está mais enxuto e fácil de seguir! 🚀
